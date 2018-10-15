@@ -65,11 +65,11 @@ class StatModel(object):
 class KNearest(StatModel):
     def __init__(self, k = 3):
         self.k = k
-        self.model = cv2.KNearest()
+        self.model = cv2.ml_KNearest()
 
     def train(self, samples, responses):
-        self.model = cv2.KNearest()
-        self.model.train(samples, responses)
+        self.model = cv2.ml_KNearest()
+        self.model.train(samples,responses)
 
     def predict(self, samples):
         retval, results, neigh_resp, dists = self.model.find_nearest(samples, self.k)
@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
     print 'training KNearest...'
     model = KNearest(k=4)
-    model.train(samples_train, labels_train)
+    model.train(samples_train)
     vis = evaluate_model(model, digits_test, samples_test, labels_test)
     cv2.imshow('KNearest test', vis)
 
