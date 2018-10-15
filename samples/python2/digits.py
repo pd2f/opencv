@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
     print 'training KNearest...'
     model = KNearest(k=4)
-    model.train(samples_train)
+    model.train(samples_train, labels_train)
     vis = evaluate_model(model, digits_test, samples_test, labels_test)
     cv2.imshow('KNearest test', vis)
 
